@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
+import "./Button.scss";
 export default function Button({ value }) {
   const { addToCart, reduceFromCart, increase, decrease } =
     useContext(CartContext);
@@ -16,16 +17,21 @@ export default function Button({ value }) {
     increase({ value });
   };
   const decreaseCart = () => {
-    decrease({ value });
+    console.log(value);
+    if (value.quantity === 1) {
+      setCart(false);
+    } else {
+      decrease({ value });
+    }
   };
   return (
     <div>
       {cart ? (
-        <>
-          <button onClick={increaseCart}>+</button>
-          <p>Add to Cart</p>
+        <div className="quantity">
           <button onClick={decreaseCart}>-</button>
-        </>
+          <p>{value.quantity}</p>
+          <button onClick={increaseCart}>+</button>
+        </div>
       ) : (
         <button onClick={AddtoCart}>Add to Cart</button>
       )}

@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import { createContext } from "react";
+import { useOutlet } from "react-router-dom";
 
 export const CartContext = createContext({
   items: [],
@@ -16,30 +17,41 @@ export const CartProvider = ({ children }) => {
   const sumOfItems = (items) => {
     console.log(items);
     let total = 0;
-    items.forEach((item) => (total += parseInt(item.value.quantity)));
+    items.forEach((item) => {
+      total += parseInt(item.value.quantity);
+    });
+    return total;
+  };
+  const TotalPrice = (items) => {
+    let total = 0;
+    items.forEach((item) => (total += parseInt(item.value.totalPrice)));
     return total;
   };
 
   const addToCart = (product) => {
+    let totalPrice = product.value.price;
+    product.value.totalPrice = totalPrice;
+    console.log("addtoCArt" + totalPrice);
     const updatedCart = [...state.items, product];
     dispatch({
       type: "ADD",
       payload: {
         items: updatedCart,
         sum: sumOfItems(updatedCart),
+        totalPrice: TotalPrice(updatedCart),
       },
     });
   };
   const reduceFromCart = (product) => {
     let updatedCart = state.items.filter(
-      (item) => item.value.id !== product.value.id
+      (item) => item.value.id !== product.item.value.id
     );
-    console.log(updatedCart);
     dispatch({
       type: "REDUCE",
       payload: {
         items: updatedCart,
         sum: sumOfItems(updatedCart),
+        totalPrice: TotalPrice(updatedCart),
       },
     });
   };
@@ -49,11 +61,13 @@ export const CartProvider = ({ children }) => {
         item.value.quantity++;
       }
     });
+    product.value.totalPrice *= product.value.quantity;
     dispatch({
       type: "INCREASE",
       payload: {
         items: state.items,
         sum: sumOfItems(state.items),
+        totalPrice: TotalPrice(state.items),
       },
     });
   };
@@ -68,10 +82,15 @@ export const CartProvider = ({ children }) => {
       payload: {
         items: state.items,
         difference: sumOfItems(state.items),
+        totalPrice: TotalPrice(state.items),
       },
     });
   };
-  const clearout = () => {};
+  const clearout = () => {
+    dispatch({
+      type: "CLEAR",
+    });
+  };
 
   const value = {
     items: state.items,
@@ -97,6 +116,7 @@ const Reducer = (state, action) => {
         ...state,
         items: payload.items,
         count: payload.sum,
+        totalPrice: payload.totalPrice,
       };
     case "REDUCE":
       console.log(state);
@@ -104,6 +124,7 @@ const Reducer = (state, action) => {
         ...state,
         items: payload.items,
         count: payload.sum,
+        totalPrice: payload.totalPrice,
       };
     case "INCREASE":
       console.log(payload.sum);
@@ -111,6 +132,7 @@ const Reducer = (state, action) => {
         ...state,
         items: payload.items,
         count: payload.sum,
+        totalPrice: payload.totalPrice,
       };
     case "DECREASE":
       console.log(payload.difference);
@@ -118,6 +140,13 @@ const Reducer = (state, action) => {
         ...state,
         items: payload.items,
         count: payload.difference,
+        totalPrice: payload.totalPrice,
+      };
+    case "CLEAR":
+      return {
+        items: [],
+        count: 0,
+        totalPrice: 0,
       };
     default:
       return new Error("Error case");
