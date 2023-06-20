@@ -1,0 +1,25 @@
+$primary-color:#393E46;
+$secondary-color:#F7F7F7;
+$weight:700;
+
+.navbar{
+border:1px solid gray;
+background-color: $primary-color;
+display:flex;
+justify-content: space-between;
+padding:10px;
+color: $secondary-color;
+font-weight:$weight;
+align-items: center;
+flex:1;
+
+li{
+    list-style:none;
+}
+img{
+    width:50px;
+}
+p{
+    color:$secondary-color;
+}
+}
