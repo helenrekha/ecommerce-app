@@ -1,6 +1,5 @@
 import { useReducer } from "react";
 import { createContext } from "react";
-import { useOutlet } from "react-router-dom";
 
 export const CartContext = createContext({
   items: [],

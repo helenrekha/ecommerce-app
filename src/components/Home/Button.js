@@ -2,17 +2,13 @@ import { useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import "./Button.scss";
 export default function Button({ value }) {
-  const { addToCart, reduceFromCart, increase, decrease } =
-    useContext(CartContext);
+  const { addToCart, increase, decrease } = useContext(CartContext);
   const [cart, setCart] = useState(false);
   const AddtoCart = () => {
     setCart(true);
     addToCart({ value });
   };
-  const RemoveToCart = () => {
-    setCart(false);
-    reduceFromCart({ value });
-  };
+
   const increaseCart = () => {
     increase({ value });
   };
