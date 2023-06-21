@@ -18,7 +18,7 @@ export default function CartPage() {
           return (
             <div className="cartItem" key={item.value.id}>
               <img src={item.value.image} alt={item.value.title} />
-              <span>{item.value.title}</span>
+              <span className="title">{item.value.title}</span>
               <span> x {item.value.quantity}</span>
               <span> {item.value.totalPrice}&euro;</span>
               <RiDeleteBinFill

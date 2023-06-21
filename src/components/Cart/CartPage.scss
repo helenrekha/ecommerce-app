@@ -1,3 +1,10 @@
+.navbar{
+    a{
+        text-decoration:none;
+        color: #F7F7F7;
+    }
+   padding:10px;
+}
 .cartItem{
     width:60%;
     display:grid;
@@ -21,4 +28,20 @@
 
 .ClearAll{
 
+}
+@media screen and (max-width:600px)
+{
+  .cartItem{
+    display:flex;
+    justify-content: space-between;
+    .title{
+        display:none;
+    }
+   
+    
+  }
+  .LoadMoreBtn{
+    width:30%
+  }
+  
 }

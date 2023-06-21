@@ -12,6 +12,7 @@ color: $secondary-color;
 font-weight:$weight;
 align-items: center;
 flex:1;
+position: relative;
 
 li{
     list-style:none;
@@ -23,6 +24,8 @@ p{
     color:$secondary-color;
 }
 span{
+    position:absolute;
+    top:0;
     color:white;
 }
 }
