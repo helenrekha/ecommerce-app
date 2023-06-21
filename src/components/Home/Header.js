@@ -8,7 +8,6 @@ export default function Header() {
   return (
     <nav className="navbar">
       <li>Home</li>
-      {console.log(count)}
       <li>
         <Link to="/Cart">
           <img src={cartImage} alt="cart" />

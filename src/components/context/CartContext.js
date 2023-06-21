@@ -15,7 +15,6 @@ export const CartProvider = ({ children }) => {
     totalPrice: 0,
   });
   const sumOfItems = (items) => {
-    console.log(items);
     let total = 0;
     items.forEach((item) => {
       total += parseInt(item.value.quantity);
@@ -31,7 +30,6 @@ export const CartProvider = ({ children }) => {
   const addToCart = (product) => {
     let totalPrice = product.value.price;
     product.value.totalPrice = totalPrice;
-    console.log("addtoCArt" + totalPrice);
     const updatedCart = [...state.items, product];
     dispatch({
       type: "ADD",
@@ -110,8 +108,6 @@ const Reducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case "ADD":
-      console.log(state);
-      console.log(state.count);
       return {
         ...state,
         items: payload.items,
@@ -119,7 +115,6 @@ const Reducer = (state, action) => {
         totalPrice: payload.totalPrice,
       };
     case "REDUCE":
-      console.log(state);
       return {
         ...state,
         items: payload.items,
@@ -127,7 +122,6 @@ const Reducer = (state, action) => {
         totalPrice: payload.totalPrice,
       };
     case "INCREASE":
-      console.log(payload.sum);
       return {
         ...state,
         items: payload.items,
@@ -135,7 +129,6 @@ const Reducer = (state, action) => {
         totalPrice: payload.totalPrice,
       };
     case "DECREASE":
-      console.log(payload.difference);
       return {
         ...state,
         items: payload.items,

@@ -1,21 +1,24 @@
 .cartItem{
     width:60%;
-    display:flex;
-    justify-content:space-between;
-    align-items: center;
+    display:grid;
+    grid-template-columns: repeat(5,1fr);
     margin:auto;
     padding: 20px;
-    position: relative;
     img{
         width:50px;
     }
+    .icon{
+        cursor: pointer;
+    }
 }
-h3{
-    text-align: center;
-    position: absolute;
-    right:0;
-    left:100
+.CartCheckout{
+    width:70%;
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    margin: auto;
 }
+
 .ClearAll{
-    
+
 }

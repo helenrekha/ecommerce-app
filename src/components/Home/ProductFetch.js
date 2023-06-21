@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import ProductDisplay from "./ProductDisplay";
+import Categories from "./Categories";
 export default function ProductFetch() {
   const [product, setProduct] = useState([]);
-  let quantity = 0;
   useEffect(() => {
     fetch("https://fakestoreapi.com/products/")
       .then((res) => res.json())
@@ -15,5 +15,13 @@ export default function ProductFetch() {
         setProduct(productsWithQuantity);
       });
   }, []);
-  return <div>{product !== null && <ProductDisplay product={product} />}</div>;
+  return (
+    <div>
+      {product !== null && (
+        <div>
+          <ProductDisplay product={product} />
+        </div>
+      )}
+    </div>
+  );
 }

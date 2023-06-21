@@ -1,33 +1,45 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import "./CartPage.scss";
+import { RiDeleteBinFill } from "react-icons/ri";
+import { Link } from "react-router-dom";
 export default function CartPage() {
   const { items, totalPrice, reduceFromCart, clearout } =
     useContext(CartContext);
   return (
     <div>
+      <nav className="navbar">
+        <Link to="/">Home</Link>
+      </nav>
       {items.length === 0 ? (
         <p>No items in the cart</p>
       ) : (
         items.map((item) => {
           return (
-            <div className="cartItem">
+            <div className="cartItem" key={item.value.id}>
               <img src={item.value.image} alt={item.value.title} />
               <span>{item.value.title}</span>
               <span> x {item.value.quantity}</span>
-              <span> {item.value.totalPrice}E</span>
-              <button onClick={() => reduceFromCart({ item })}>Delete</button>
+              <span> {item.value.totalPrice}&euro;</span>
+              <RiDeleteBinFill
+                className="icon"
+                size={25}
+                onClick={() => reduceFromCart({ item })}
+              />
             </div>
           );
         })
       )}
-      <h3>
-        <span>Total</span>
-        {totalPrice}&euro;
-      </h3>
-      <button onClick={() => clearout} className="ClearAll">
-        Clear All
-      </button>
+      <div className="CartCheckout">
+        <button onClick={() => clearout} className="ClearAll">
+          Clear All
+        </button>
+        <h3>
+          <span>Total </span>
+          {totalPrice}&euro;
+        </h3>
+        <button>Checkout</button>
+      </div>
     </div>
   );
 }
