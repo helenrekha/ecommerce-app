@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import ProductDisplay from "./ProductDisplay";
-import Categories from "./Categories";
 export default function ProductFetch() {
   const [product, setProduct] = useState([]);
   useEffect(() => {
