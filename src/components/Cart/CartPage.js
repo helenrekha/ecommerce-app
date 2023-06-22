@@ -24,14 +24,14 @@ export default function CartPage() {
               <RiDeleteBinFill
                 className="icon"
                 size={25}
-                onClick={() => reduceFromCart({ item })}
+                onClick={() => reduceFromCart(item.value.id)}
               />
             </div>
           );
         })
       )}
       <div className="CartCheckout">
-        <button onClick={() => clearout} className="ClearAll">
+        <button onClick={clearout} className="ClearAll">
           Clear All
         </button>
         <h3>

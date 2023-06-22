@@ -13,6 +13,8 @@ font-weight:$weight;
 align-items: center;
 flex:1;
 position: relative;
+position: sticky;
+top:0;  
 
 li{
     list-style:none;
@@ -25,7 +27,8 @@ p{
 }
 span{
     position:absolute;
-    top:0;
+    top:0px;
+    right:20px;
     color:white;
 }
 }
