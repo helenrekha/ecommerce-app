@@ -9,7 +9,7 @@ export default function CartPage() {
   return (
     <div>
       <nav className="navbar">
-        <Link to="/">Home</Link>
+        <Link to="/">Shoppie</Link>
       </nav>
       {items.length === 0 ? (
         <p>No items in the cart</p>

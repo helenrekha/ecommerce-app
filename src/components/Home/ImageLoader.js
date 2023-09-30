@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ProductContext } from "../context/ProductContext";
 import "./ImageLoader.scss";
 import Button from "./Button";
-export default function ImageLoader({ product }) {
+export default function ImageLoader({ products }) {
   let Imagescount = 6;
   const [next, setNext] = useState(Imagescount);
   const handleMore = () => {
@@ -10,8 +11,8 @@ export default function ImageLoader({ product }) {
 
   return (
     <div className="product">
-      {product.length ? (
-        product.slice(0, next).map((value) => (
+      {products.length ? (
+        products.slice(0, next).map((value) => (
           <div className="card" key={value.id}>
             <img src={value.image} alt={value.title} />
             <p className="title">{value.title}</p>
@@ -22,7 +23,7 @@ export default function ImageLoader({ product }) {
       ) : (
         <p>Loading...</p>
       )}
-      {next < product.length ? (
+      {next < products.length ? (
         <button className="LoadMoreBtn" onClick={handleMore}>
           Load more
         </button>
