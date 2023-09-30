@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../context/ProductContext";
+import "./Search.scss";
 export default function Search({ setupdatedProduct }) {
   const { products } = useContext(ProductContext);
   const [searchValue, setSearchValue] = useState("");
@@ -16,7 +17,6 @@ export default function Search({ setupdatedProduct }) {
     <div>
       <input
         className="search"
-        style={{ color: "black" }}
         type="text"
         value={searchValue}
         onChange={(e) => {
