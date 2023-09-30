@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-import { ProductContext } from "../context/ProductContext";
+import { useState } from "react";
 import "./ImageLoader.scss";
 import Button from "./Button";
 export default function ImageLoader({ products }) {

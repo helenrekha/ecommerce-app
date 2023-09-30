@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { ProductContext } from "../context/ProductContext";
+import "./Categories.scss";
 export default function Categories({ setFilters, setupdatedProduct }) {
   const { products } = useContext(ProductContext);
   let categories = products.map((value) => value.category);
@@ -18,7 +19,11 @@ export default function Categories({ setFilters, setupdatedProduct }) {
   return (
     <div className="categories">
       {uniquecategories.map((category) => (
-        <button key={category} onClick={() => onclick({ category })}>
+        <button
+          className="categoriesButton"
+          key={category}
+          onClick={() => onclick({ category })}
+        >
           {category}
         </button>
       ))}
