@@ -5,12 +5,13 @@ export default function Search({ setupdatedProduct }) {
   const { products } = useContext(ProductContext);
   const [searchValue, setSearchValue] = useState("");
   useEffect(() => {
+    debugger;
     const delayDebounceFn = setTimeout(() => {
       let array = products.filter((product) =>
         product.title.toLowerCase().includes(searchValue.toLowerCase())
       );
       setupdatedProduct(array);
-    }, 1500);
+    }, 500);
     return () => clearTimeout(delayDebounceFn);
   }, [searchValue]);
   return (
