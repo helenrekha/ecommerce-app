@@ -3,6 +3,7 @@ import ImageLoader from "./ImageLoader";
 import { ProductContext } from "../context/ProductContext";
 import { useContext, useEffect, useState } from "react";
 import Search from "./Search";
+import "./ProductsDisplay.scss";
 export default function ProductDisplay() {
   const { products } = useContext(ProductContext);
   const [filters, setFilters] = useState("");
@@ -28,7 +29,12 @@ export default function ProductDisplay() {
         setFilters={setFilters}
         setupdatedProduct={setupdatedProduct}
       />
-      {itemsFound === false && <p>No relavent Items found</p>}
+      {itemsFound === false && (
+        <div className="Error">
+          <p>No relavent Items found</p>
+          <p>Loading All items...</p>
+        </div>
+      )}
       {updatedProduct.length >= 1 ? (
         <ImageLoader products={updatedProduct} />
       ) : filteredProducts.length >= 1 ? (

@@ -11,9 +11,10 @@ export default function Search({ setupdatedProduct, setItemsFound }) {
         product.title.toLowerCase().includes(searchValue.toLowerCase())
       );
       setupdatedProduct(array);
-      if (array.length === 0) {
+      // Check if it's not the initial render before setting itemFound
+      if (array.length === 0 && searchValue !== "") {
         setItemsFound(false);
-      } else {
+      } else if (array.length >= 1) {
         setItemsFound(true);
       }
     }, 1000);
