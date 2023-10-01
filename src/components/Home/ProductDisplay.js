@@ -18,6 +18,7 @@ export default function ProductDisplay() {
       newProducts = products.filter((product) => filters === product.category);
     }
     setFilteredProducts(newProducts);
+    //eslint-disable-next-line
   }, [filters]);
   return (
     <div>
