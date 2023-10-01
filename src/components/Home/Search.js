@@ -4,15 +4,21 @@ import "./Search.scss";
 export default function Search({ setupdatedProduct }) {
   const { products } = useContext(ProductContext);
   const [searchValue, setSearchValue] = useState("");
+  const [itemFound, setItemFound] = useState(true);
   useEffect(() => {
-    debugger;
     const delayDebounceFn = setTimeout(() => {
       let array = products.filter((product) =>
         product.title.toLowerCase().includes(searchValue.toLowerCase())
       );
       setupdatedProduct(array);
-    }, 500);
+      if (array.length === 0) {
+        setItemFound(false);
+      } else {
+        setItemFound(true);
+      }
+    }, 1000);
     return () => clearTimeout(delayDebounceFn);
+    //eslint-disable-next-line
   }, [searchValue]);
   return (
     <div>
@@ -25,6 +31,7 @@ export default function Search({ setupdatedProduct }) {
         }}
         placeholder="search for products"
       />
+      {!itemFound && <p>No relavent items found, try searching again</p>}
     </div>
   );
 }

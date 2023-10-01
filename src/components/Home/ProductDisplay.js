@@ -25,9 +25,10 @@ export default function ProductDisplay() {
         setFilters={setFilters}
         setupdatedProduct={setupdatedProduct}
       />
-      {updatedProduct.length > 1 ? (
+
+      {updatedProduct.length >= 1 ? (
         <ImageLoader products={updatedProduct} />
-      ) : filteredProducts.length > 1 ? (
+      ) : filteredProducts.length >= 1 ? (
         <ImageLoader products={filteredProducts} />
       ) : (
         <ImageLoader products={products} />

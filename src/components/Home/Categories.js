@@ -24,7 +24,7 @@ export default function Categories({ setFilters, setupdatedProduct }) {
           key={category}
           onClick={() => onclick({ category })}
         >
-          {category}
+          {category.charAt(0).toUpperCase() + category.slice(1)}
         </button>
       ))}
     </div>
