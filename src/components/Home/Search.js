@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../context/ProductContext";
 import "./Search.scss";
-export default function Search({ setupdatedProduct }) {
+export default function Search({ setupdatedProduct, setItemsFound }) {
   const { products } = useContext(ProductContext);
   const [searchValue, setSearchValue] = useState("");
-  const [itemFound, setItemFound] = useState(true);
+
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       let array = products.filter((product) =>
@@ -12,9 +12,9 @@ export default function Search({ setupdatedProduct }) {
       );
       setupdatedProduct(array);
       if (array.length === 0) {
-        setItemFound(false);
+        setItemsFound(false);
       } else {
-        setItemFound(true);
+        setItemsFound(true);
       }
     }, 1000);
     return () => clearTimeout(delayDebounceFn);
@@ -31,7 +31,6 @@ export default function Search({ setupdatedProduct }) {
         }}
         placeholder="search for products"
       />
-      {!itemFound && <p>No relavent items found, try searching again</p>}
     </div>
   );
 }

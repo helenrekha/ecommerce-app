@@ -8,7 +8,7 @@ export default function ProductDisplay() {
   const [filters, setFilters] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [updatedProduct, setupdatedProduct] = useState([]);
-
+  const [itemsFound, setItemsFound] = useState(null);
   //
   useEffect(() => {
     let newProducts = [];
@@ -20,12 +20,15 @@ export default function ProductDisplay() {
   }, [filters]);
   return (
     <div>
-      <Search setupdatedProduct={setupdatedProduct} />
+      <Search
+        setupdatedProduct={setupdatedProduct}
+        setItemsFound={setItemsFound}
+      />
       <Categories
         setFilters={setFilters}
         setupdatedProduct={setupdatedProduct}
       />
-
+      {itemsFound === false && <p>No relavent Items found</p>}
       {updatedProduct.length >= 1 ? (
         <ImageLoader products={updatedProduct} />
       ) : filteredProducts.length >= 1 ? (
