@@ -14,10 +14,13 @@ export default function ProductDisplay() {
   useEffect(() => {
     let newProducts = [];
     if (filters !== "") {
-      console.log("hello");
       newProducts = products.filter((product) => filters === product.category);
     }
-    setFilteredProducts(newProducts);
+    if (filters === "All items") {
+      setFilteredProducts(products);
+    } else {
+      setFilteredProducts(newProducts);
+    }
     //eslint-disable-next-line
   }, [filters]);
   return (

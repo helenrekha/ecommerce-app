@@ -10,9 +10,9 @@ export const ProductProvider = ({ children }) => {
           ...item,
           quantity: 1,
           totalPrice: 1,
+          inCart: false,
         }));
         setProducts(productsWithQuantity);
-        console.log(products);
       });
   }, []);
 

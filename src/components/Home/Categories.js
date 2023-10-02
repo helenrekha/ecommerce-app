@@ -11,6 +11,7 @@ export default function Categories({ setFilters, setupdatedProduct }) {
         : [...uniqueValues, currentValue],
     []
   );
+  uniquecategories.push("All Items");
   const onclick = (category) => {
     setupdatedProduct([]);
     setFilters(Object.values(category)[0]);

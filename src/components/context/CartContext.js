@@ -33,6 +33,7 @@ export const CartProvider = ({ children }) => {
     let totalPrice = product.value.price;
     product.value.totalPrice = totalPrice * product.value.quantity;
     const updatedCart = [...state.items, product];
+    product.value.inCart = true;
     dispatch({
       type: "ADD",
       payload: {
@@ -43,9 +44,17 @@ export const CartProvider = ({ children }) => {
     });
   };
   const reduceFromCart = (id) => {
+    //re-setting the quantity value when delete is clicked
+    state.items.forEach((item) => {
+      if (item.value.id === Number(id)) {
+        item.value.quantity = 1;
+        item.value.inCart = false;
+      }
+    });
     let updatedCart = state.items.filter(
       (item) => item.value.id !== Number(id)
     );
+
     dispatch({
       type: "REDUCE",
       payload: {

@@ -1,8 +1,7 @@
 // Search.test.js
 
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect"; // For additional matchers
+import { render, screen } from "@testing-library/react";
 import Search from "./Search";
 
 const mockProductContext = {
@@ -13,13 +12,13 @@ const mockProductContext = {
   ],
 };
 
-jest.mock("../context/ProductContext", () => ({
-  ProductContext: {
-    Consumer: ({ children }) => children(mockProductContext),
-  },
-}));
+// jest.mock("../context/ProductContext", () => ({
+//   ProductContext: {
+//     Consumer: ({ children }) => children(mockProductContext),
+//   },
+// }));
 test("Renders the input element", () => {
-  render(<Search setupdatedProduct={() => {}} />);
+  render(<Search setupdatedProduct={() => {}} setItemsFound={() => {}} />);
   const searchInput = screen.getByPlaceholderText("Search for products");
   expect(searchInput).toBeInTheDocument();
 });
