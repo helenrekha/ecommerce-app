@@ -20,7 +20,7 @@ export default function CartPage() {
               <img src={item.value.image} alt={item.value.title} />
               <span className="title">{item.value.title}</span>
               <span> x {item.value.quantity}</span>
-              <span> {Math.round(item.value.totalPrice)}&euro;</span>
+              <span> {parseFloat(item.value.totalPrice).toFixed(2)}&euro;</span>
               <RiDeleteBinFill
                 className="icon"
                 size={25}
@@ -36,7 +36,7 @@ export default function CartPage() {
         </button>
         <h3>
           <span>Total </span>
-          {totalPrice}&euro;
+          {parseFloat(totalPrice).toFixed(2)}&euro;
         </h3>
         <button>Checkout</button>
       </div>
