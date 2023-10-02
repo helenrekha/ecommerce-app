@@ -1,5 +1,5 @@
-$primary-color:#393E46;
-$secondary-color:#F7F7F7;
+$primary-color:#13293D;
+$secondary-color:#EF8354;
 $weight:700;
 
 .navbar{
@@ -15,7 +15,10 @@ flex:1;
 position: relative;
 position: sticky;
 top:0;  
-
+a{
+text-decoration: none;
+color:whitesmoke;
+}
 li{
     list-style:none;
 }
@@ -31,4 +34,15 @@ span{
     right:20px;
     color:white;
 }
+input{
+border:1px solid;
+border-radius:30px;
+padding:5px;
+position: relative;
+}
+.icon{
+    position: absolute;
+    right:450px;
+}
+
 }

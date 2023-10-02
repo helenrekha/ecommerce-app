@@ -8,8 +8,8 @@ export default function CartPage() {
     useContext(CartContext);
   return (
     <div>
-      <nav className="navbar">
-        <Link to="/">Home</Link>
+      <nav className="navbar_Cart">
+        <Link to="/">SHOPPIE</Link>
       </nav>
       {items.length === 0 ? (
         <p>No items in the cart</p>
@@ -20,7 +20,7 @@ export default function CartPage() {
               <img src={item.value.image} alt={item.value.title} />
               <span className="title">{item.value.title}</span>
               <span> x {item.value.quantity}</span>
-              <span> {item.value.totalPrice}&euro;</span>
+              <span> {Math.round(item.value.totalPrice)}&euro;</span>
               <RiDeleteBinFill
                 className="icon"
                 size={25}

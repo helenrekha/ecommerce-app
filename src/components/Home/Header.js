@@ -7,7 +7,8 @@ export default function Header() {
   const { count } = useContext(CartContext);
   return (
     <nav className="navbar">
-      <li>Home</li>
+      <Link to="/">SHOPPIE</Link>
+
       <li>
         <Link to="/Cart">
           <img src={cartImage} alt="cart" />

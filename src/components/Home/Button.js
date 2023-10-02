@@ -4,11 +4,9 @@ import "./Button.scss";
 export default function Button({ value }) {
   const { addToCart, increase, decrease, reduceFromCart } =
     useContext(CartContext);
-  const [cart, setCart] = useState(false);
-  const [cartvalue, setValue] = useState(1);
 
+  const [cartvalue, setValue] = useState(1);
   const AddtoCart = () => {
-    setCart(true);
     addToCart({ value });
   };
 
@@ -21,13 +19,12 @@ export default function Button({ value }) {
     if (cartvalue > 1) {
       decrease({ value });
     } else {
-      setCart(false);
       reduceFromCart(value.id);
     }
   };
   return (
     <div>
-      {cart ? (
+      {value.inCart ? (
         <div className="quantity">
           <button onClick={decreaseCart}>-</button>
           <p>{value.quantity}</p>

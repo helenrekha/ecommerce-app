@@ -1,9 +1,24 @@
-.navbar{
+$primary-color:#13293D;
+$secondary-color:#EF8354;
+$weight:700;
+.navbar_Cart{
+border:1px solid gray;
+background-color: $primary-color;
+display:flex;
+justify-content: space-between;
+padding:10px;
+color: white;
+font-weight:$weight;
+align-items: center;
+flex:1;
+position: relative;
+position: sticky;
+top:0;  
     a{
         text-decoration:none;
-        color: #F7F7F7;
+        color:whitesmoke;
     }
-   padding:10px;
+   padding:20px;
 }
 .cartItem{
     width:60%;
