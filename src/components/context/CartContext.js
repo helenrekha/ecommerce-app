@@ -98,7 +98,11 @@ export const CartProvider = ({ children }) => {
     });
   };
   const clearout = () => {
-    console.log("inside clearout");
+    //resetting the value before clearing it out
+    state.items.forEach((item) => {
+      item.value.quantity = 1;
+      item.value.inCart = false;
+    });
     dispatch({
       type: "CLEAR",
       payload: {
