@@ -4,13 +4,13 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import Search from "./Search";
 
-const mockProductContext = {
-  products: [
-    { title: "Product A" },
-    { title: "Product B" },
-    { title: "Another Product" },
-  ],
-};
+// const mockProductContext = {
+//   products: [
+//     { title: "Product A" },
+//     { title: "Product B" },
+//     { title: "Another Product" },
+//   ],
+// };
 
 // jest.mock("../context/ProductContext", () => ({
 //   ProductContext: {
